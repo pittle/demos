@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+</head>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.wrap{
+		width:100px;
+		height:100px;
+		background-color: yellow;
+		position: absolute;
+		top:0;
+		left: 0;
+	}
+</style>
+<body>
+	<div class="wrap"></div>
+	<script type="text/javascript">
+		var manageCookie = {
+			setCookie:function(name,value,time){
+				document.cookie = name + '=' + value + ";max-age=" + time;
+				return this;
+			},
+			removeCookie:function(name){
+				return this.setCookie(name,'',-1);
+			},
+			getCookie:function(name,callback){
+					var strCookie = document.cookie;
+					var arrCookie = strCookie.split('; ');
+					for(var i = 0;i < arrCookie.length;i ++){
+						var arr = arrCookie[i].split('=');
+						if(arr[0] == name){
+							//callback(arr[1]);
+							return arr[1];
+						}
+					}
+					//callback(undefined);
+					return false;
+			}
+		}
+
+
+	 var div = document.getElementsByTagName('div')[0];
+	 var disY,disX,Left,Top;
+
+    if(manageCookie.getCookie('Left')){
+    		 div.style.left = manageCookie.getCookie('Left'); 
+             div.style.top = manageCookie.getCookie('Top');
+    }
+	 div.onmousedown = function(e){
+	 	disX = e.pageX - div.offsetLeft;//  如果设置为this.dom.style.top那么第二次点击时此值是一个像素
+	 	disY = e.pageY - div.offsetTop;
+	 document.onmousemove = function(e){
+	 		
+	 		  var event = e || window.event;
+              Left = div.style.left = e.pageX - disX + 'px'; // 同上理如果设置成this.dom.offsetLeft是一个整数
+              Top = div.style.top = e.pageY  - disY + 'px';
+            
+              // document.cookie =  "left=" + div.style.left;
+              // document.cookie = "top=" + div.style.left;
+	 	}
+	 this.onmouseup = function(){
+	 		document.onmousemove = null;
+         	document.onmouseup = null;
+	 		manageCookie.setCookie('Left',Left);
+            manageCookie.setCookie('Top',Top);
+	 	}
+	 }
+
+
+	</script>
+	  
+</body>
+</html>
