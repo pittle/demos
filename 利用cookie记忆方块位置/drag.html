@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>完善Drag</title>
+</head>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	div{
+		width:100px;
+		height:100px;
+		background-color: yellow;
+		position: absolute;
+		top: 0px;
+		left:0px;
+	}
+</style>
+<body>
+	<div id="only"></div>
+	<script type="text/javascript">
+		var div = document.getElementsByTagName('div')[0];
+		var manageCookie = {
+			setCookie : function(name,value,time){
+				document.cookie = name + '=' + value + ";max-age=" + time;
+				return this;
+			},
+			removeCookie:function(name){
+				this.setCookie(name,'',-1);
+				return this;
+			},
+			getCookie:function(name,callback){
+				//Cookie = document.cookie;
+				CookieStr = document.cookie.split('; ');
+				for(var i = 0;i < CookieStr.length;i ++){
+					CookieArr = CookieStr[i].split('=');
+					if(CookieArr[0] == name){
+				       callback(CookieArr[1]);
+				       return this;
+					}
+				}
+				callback(undefined);
+				return this;
+			}
+		}
+		manageCookie.setCookie('pittle',20,1000000).setCookie('Ann',18,1000000).getCookie('pittle',function(mata){console.log(mata)});
+        
+
+        var drag = {
+        	init:function(dom){
+        		this.dom = dom;
+                var _this = this;
+                console.log(this);
+               this.bindEvent();
+               manageCookie.getCookie('CookieLeft',function(date){
+               	_this.dom.style.left = date;
+               }).getCookie('CookieTop',function(date){
+               	_this.dom.style.top = date;
+               });
+        	},
+        	bindEvent:function(){
+              this.dom.onmousedown = this.mouseDown.bind(this);  //这事onmousedown函数内部的this默认指向this.dom 所以需要改变this指向
+        	},
+        	mouseDown:function(e){
+                this.disY = e.clientY - this.dom.offsetTop;
+                this.disX = e.clientX - this.dom.offsetLeft;
+                document.onmousemove = this.mouseMove.bind(this);
+                document.onmouseup = this.mouseUp.bind(this);
+            },
+        	mouseMove:function(e){
+        	  this.Left	= this.dom.style.left = e.clientX - this.disX + 'px';
+        	  this.Top = this.dom.style.top = e.clientY - this.disY + 'px';
+        	},
+        	mouseUp:function(e){
+        		document.onmousemove = null;
+        		document.onmouseup = null;
+        		manageCookie.setCookie('CookieLeft',this.Left,10000).setCookie('CookieTop',this.Top,10000);
+        	}
+        }
+
+        drag.init(div);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+  /*头部导航栏*/
+.wrap .nav{
+    background-color: #545652;
+    width: 100%;  
+    font-size: 12px;
+    line-height: 28px;
+    height: 28px;
+    display: inline-block;
+}
+.wrap .nav .left,.wrap .nav .left li,.wrap .nav .right{
+    display: inline-block;
+}
+.wrap .nav .left li a{
+    margin-left: 20px;
+    color:#d5d5d5;
+}
+.wrap .nav .right{
+    margin-left: 800px;
+}
+.wrap .nav .right a{
+    margin-left: 20px;
+    color:#d5d5d5;
+}
+
+/*   搜索区域  以及搜索下部导航栏*/
+.wrap .search{
+    background-color: #f0f3ef;
+    height: 115.4px;
+    width: 100%;
+    box-sizing: content-box;
+    overflow: hidden;
+}
+.wrap .search .header{
+    width: 100%;
+    height: 75px;
+    padding-left: 245px;
+    border-bottom:1px solid #ccc;
+}
+.wrap .search .header h2{
+    /*background: url(//img3.doubanio.com/dae/accounts/resources/19507ad/music/assets/lg_music_a12_2.png?s=1) no-repeat 10px 12px;*/
+    color: orangered;
+    width: 145px;
+    height: 74px;
+    line-height: 74px;
+    display: inline-block;
+}
+.wrap .search .header .input{
+    display: inline-block;
+    width: 470px;
+    height: 30px;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    padding-left:14px;
+}
+.wrap .search .header .submit{
+    height: 32px;
+    width: 37px;
+    margin-left: -8px;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+    background-color: #545652;
+    color:#fff;
+}
+.wrap .search .buttom{
+    width: 1024px;
+    height: 40.4px;
+    display: inline-block;
+    padding-left: 220px;
+    line-height: 40.4px;
+}
+.wrap .search .buttom li{
+    box-sizing: content-box;
+    display: inline-block;
+    height:22.4px;   
+    font-size: 14px;
+    padding-left: 25px;
+}
+.wrap .search .buttom li a{
+    color:#545652;
+}
+
+
+
+/*这里是轮播图与选项卡*/
+.wrap .content{
+    width: 1040px;
+    height: 766.6px;
+    /*border:3px solid red;*/
+    margin:40px auto;
+    position: relative;
+}
+.wrap .content .plus{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 675px;
+    height: 766.6px;
+    /*border: 3px solid yellow;*/
+}
+.wrap .content .plus .tip{
+    margin-top:40px;
+    width: 675px;
+    height: 476.6px;
+    border: 1px solid black;
+}
+/*轮播图右边广告  以及下边的分类操作*/
+/*我要加入*/
+.wrap .content .ads{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 300px;
+    /*border: 3px solid green;*/
+}
+.wrap .content .ads .page{
+    width: 300px;
+    height: 250px;
+    /*border: 3px solid green;*/
+    margin-bottom: 15px;
+}
+.wrap .content .ads .join{
+    width: 300px;
+    height: 100px;
+    margin-bottom: 30px;
+    /*border: 3px solid green;*/
+}
+.wrap .content .ads .join .join-block{
+    width: 98px;
+    height: 57px;
+    margin-right: 2px;
+    float: left;
+    background-color: #F5F7F8;
+    text-align: center;
+    margin-bottom: 3px;
+}
+.wrap .content .ads .join .join-block h2{
+    color: #138A64;
+    font-size: 17px;
+    margin-top: 9px;
+}
+.wrap .content .ads .join .join-block p{
+    font-size: 15px;
+    color: #666;
+    margin-top: 3px;
+}
+.wrap .content .ads .join .join-block::after{
+        display: block;
+        content: '';
+        clear: both;
+}
+.wrap .content .ads .join button{
+    height: 38px;
+    width: 100%;
+    background-color: #139D72;
+    display: block;
+    font-size: 17px;
+    line-height: 38px;
+    text-align: center;
+    border-radius:3px;
+    color: #fff;
+    border: 1px solid #138A64;
+}
+/*热门音乐人分类*/
+.wrap .content .ads .tag-block{
+    width: 300px;
+    height: 216.8px;
+    /*border: 3px solid green;*/
+}
+.wrap .content .ads .tag-block .clasify{
+    width: 300px;
+    height: 24px;
+}
+.wrap .content .ads .tag-block .header{
+    font-size: 15px;
+    color: #222;
+    float: left;
+    width: 105px;
+    height: 24px;
+    line-height: 24px;
+}
+.wrap .content .ads .tag-block .more{
+    display: block;
+    float: right;
+    font-size: 13px;
+    color: #666;
+}
+.wrap .content .ads .tag-block .clasify::after{
+    clear: both;
+}
+.wrap .content .ads .tag-block table{
+    width: 300px;
+    height: 192.8px;
+    border-collapse: collapse;
+    font-size: 15px;
+    color: #138A64;
+}
+.wrap .content .ads .tag-block table th,
+.wrap .content .ads .tag-block table td{
+    border-top: 1px solid #F8F6F6;
+    border-bottom: 1px solid #F8F6F6;
+    border-right: 1px solid #F8F6F6;
+    padding-left: 5px;
+}
+/*.wrap .content .ads .tag-block table th{*/
+    /*width:148.8px;*/
+    /*height: 38.4px;*/
+    /*text-align: left;*/
+    /*font-weight: 400;*/
+/*}*/
+/*.wrap .content .ads .tag-block table td{*/
+    /*border-right: 1px solid #F8F6F6;*/
+/*}*/
+
+

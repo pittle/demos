@@ -1,0 +1,40 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+.wrapper{
+    width:80%;
+    min-width:930px;
+    margin:0 auto;
+    /* border:1px solid black; */
+    text-align: center;
+}
+.wrapper ul{
+    display: inline-block;
+}
+.wrapper ul li{
+    float: left; 
+}
+.wrapper ul li .item{
+    width: 200px;
+    padding:10px;
+    border:1px solid #ccc;
+    margin:0 5px 10px;
+}
+.wrapper ul li .imgBox{
+    width:200px;
+    overflow: hidden;
+}
+.wrapper ul li .item img{
+    width:200px;
+}
+.wrapper ul li .item p{
+    text-align: left;
+}
+.wrapper .loading{
+    font-size:30px;
+    color:#ccc;
+    font-weight: bolder;
+    display:none;
+}
