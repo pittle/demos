@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<style>	
+	*{
+		margin: 0;
+		padding:0;
+	}
+	html,body{
+		width:100%;
+		height: 100%; 
+		background:url(./yu.jpg);
+	}
+	#demo{
+		width: 1000px;
+		height: 600px;
+		margin:0px auto;	
+		background-size: contain;
+		text-align: center;
+	}
+	#demo ul li{
+		list-style: none;
+		width: 100px;
+		height: 60px;
+		float: left;
+		line-height: 60px;
+		text-align: center;
+		color: #fff;
+	}
+	#demo ul li.active{
+		color: red;
+	}
+	#demo button{
+		
+	}
+
+	</style>
+</head>
+<body>
+	
+	<div id="demo">	
+	</div>
+	
+	<script>	
+		var demo = document.getElementById('demo');
+		var oUl = document.createElement('ul');
+		demo.appendChild(oUl);
+		function init(){		
+		    
+			var arr = [];
+			var str = '';
+			for(var i = 0; i < 100;i ++){
+				str += '<li i='+ i + '>' + i +'</li>';
+				arr.push(i);
+			}
+			oUl.innerHTML = str;
+			var button = document.createElement('button');
+			button.innerHTML = "点击开始";
+			oUl.appendChild(button);
+			button.onclick = bindEvent;
+		}
+
+		function bindEvent(e){
+			var active = document.getElementsByClassName('active')[0];
+			if(active != undefined){
+				active.className = '';
+			}
+
+			//选10个人
+			var rand,oArr=[];
+			for(var j = 0; j < 10; j ++){
+				rand = Math.ceil(Math.random() * 100);
+				oArr.push(rand);
+			}
+
+
+			var oLi = demo.getElementsByTagName('li');
+			oLi[rand].className = 'active';
+
+			var active = document.getElementsByClassName('active');
+			active.className = '';
+			alert('恭喜' + rand + '号同学中奖');
+		}
+
+		init();
+		
+
+
+	</script>
+</body>
+</html>

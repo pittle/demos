@@ -1,0 +1,78 @@
+*{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+body{
+    background-color:#eee;
+}
+.wrapper{
+    width:500px;
+    position:relative;
+    margin:100px auto;
+    background-color:#fff;
+}
+.content{
+    width:500px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;    
+}
+.imgCover{
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.imgCover img{
+    position:absolute;
+}
+.moveView{
+    position:absolute;
+    background:url('./img/move-box.png');
+    cursor:move;
+}
+.bottomBox{
+    height:92px;
+    overflow: hidden;
+    min-width:500px;
+    border:1px solid #eee;
+}
+.bottomBox ul{
+    height:100px;
+    position:relative;
+    left:0;
+}
+.bottomBox ul li{
+    float:left;
+    width:100px;
+    cursor: pointer;
+}
+.bottomBox ul li div{
+    padding:1px;
+    height:78px;
+    margin:5px;
+    border:1px solid #ddd;
+    text-align:center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.bottomBox ul li img{
+    width:100%;
+    height:100%;
+}
+.bottomBox ul .active div{
+    border:1px solid #000;
+}
+.bigView{
+    height:500px;
+    width:500px;
+    position:absolute;
+    left:105%;
+    top:0;
+    z-index:99;
+    background-color: #fff;
+    display:none;
+    overflow: hidden;
+}

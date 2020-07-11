@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			padding: 50px;
+			border:100px solid #ccc;
+			background: red;
+			box-sizing: border-box;
+
+			/*width:100px;
+			height: 100px;
+			border:1px solid #ccc;
+			box-sizing: border-box;*/
+		}
+	</style>
+</head>
+<body>
+	  <div id="demo"></div>
+	  <script>
+	  	//https://segmentfault.com/q/1010000020198989
+	  	// 这是个特殊情况：
+		// 你的padding 是50，边框是100； 也就是说你的最小宽度 是 300;
+		// 当你的最小宽度大于你设置的宽度的时候，容器会使用 最小宽度300
+	  	// offsetWidth offsetHeight  ===  content + padding + border
+	  </script>
+</body>
+</html>

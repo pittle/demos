@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		.wrapper{
+			width: 400px;
+			height: 600px;
+			margin:100px auto;
+			border: 1px solid #ccc;
+			position: relative;
+			overflow: hidden;
+		}
+		#go{
+			width: 400px;
+			height: 100px;
+			text-align:center;
+			position:absolute;
+    		top:0;
+    		z-index: 100;
+		}
+		#go a{
+			text-decoration: none;
+			font-size: 60px;
+			color: aliceblue;
+			border-bottom:3px dashed #eee;
+		}
+		#main{
+			width: 400px;
+			height: 600px;
+			position: absolute;
+			top:-150px;
+			/*overflow: hidden;不能设置在这个区域，因为这个区域是动态的*/
+			
+		}
+		.item{
+			width: 100%;
+			height: 150px;
+		}
+		.item > div{
+			border-right: 1px solid red;
+			border-bottom: 1px solid red;
+			float: left;
+			width: 99px;
+			height: 149px;
+		}
+		.item > div:last-child{
+				border-right: none;
+		}
+	</style>
+</head>
+<body>
+	 <div class="wrapper">
+	 	<div id="go">
+	 		<a href="#">Game start</a>
+	 	</div>
+	 	<div id="main"></div>
+	 </div>
+
+	 <script>
+	 	  var main = document.getElementById('main');
+	 	  var go = document.getElementById('go');
+	 	  var colors = ["red",'yellow','blue','yellow'];
+	 	  var timer = null,flag = true,iSpeed = 5,num = 0;
+	 	  init();
+	 	  function init(){
+	 	  		go.onclick = function(){ 	  		
+ 	  				clearInterval(timer);
+ 	  				timer = setInterval(function(){
+	  					    main.style.top = (main.offsetTop += iSpeed) + "px";
+	  					    if(parseInt(main.style.top) >= 0){
+	  					    	main.style.top = "-150px";
+	  							createDiv();
+	  					    }
+	  					    var len = main.children.length; //走出就删除一个
+	  					    if(len >= 6){
+	  					    	for(var i = 0; i < 4; i ++){
+	  					    		if(main.children[len - 1].children[i].classList.contains('i') ){   
+	  					    			// main.children[len - 1].children[i] == "i" 也可以
+	  					    			alert("over，得分",num);
+	  					    			clearInterval(timer);
+	  					    			flag = false;
+	  					    		}
+	  					    	}
+	  					    	main.children[len - 1].remove()
+	  					    }
+ 	  				},20);
+ 	  				bindEvent();
+	 	  		}
+	 	  }
+	 	  function createDiv(){
+	 	  		oDiv = document.createElement('div');
+	 	  		var index = Math.floor(Math.random()*4);
+	 	  		oDiv.className = "item";  //oDiv.setAttribute('class','row');
+	 	  		for(var i = 0;i < 4;i ++){
+	 	  			iDiv = document.createElement('div');
+	 	  			oDiv.appendChild(iDiv);
+	 	  		}
+	 	  		if(main.children.length == 0){
+					main.appendChild(oDiv);
+				}else{
+					main.insertBefore(oDiv,main.children[0]);
+				}  	
+				var clickDiv = main.children[0].children[index];
+				clickDiv.className = "i";
+				clickDiv.style.backgroundColor = colors[index];
+	 	  }
+
+	 	  function bindEvent(){
+	 	  		main.addEventListener('click',function(e){
+	 	  			if(flag){
+	 	  			var tar  = e.target;
+	 	  			if(tar.className == "i"){
+	 	  				tar.style.backgroundColor = "#bbb";
+	 	  				tar.classList.remove("i");
+	 	  				num ++;
+	 	  			}else{
+	 	  				flag = false;
+	 	  				alert("over，得分" + num);
+	  					clearInterval(timer);
+	 	  			}
+	 	  			if(num % 10 == 0){ //这个是让速度变得越来越快
+	 	  				iSpeed ++;
+	 	  			}
+	 	  			}
+	 	  		});
+	 	  }
+	 </script>
+</body>
+</html>
